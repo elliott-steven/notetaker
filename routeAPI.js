@@ -1,10 +1,9 @@
 
 var fs = require("fs");
-var notesData = getNotes();
+var noteInput = getNotes();
 
 function getNotes() {
     let data = fs.readFileSync('./db/db.json', 'utf8');
-
     let notes = JSON.parse(data);
 
     // Each note ID will match Index
@@ -12,16 +11,14 @@ function getNotes() {
         notes[i].id = '' + i;    }
     return notes;
 }
-
 module.exports = function (app) {
 
     app.get("/api/notes", function (req, res) {
-        notesData = getNotes();
-        res.json(notesData);
+        noteInput = getNotes();
+        res.json(noteInput);
     });
-
     app.post("/api/notes", function (req, res) {
-        notesData.push(req.body);
-        fs.writeFileSync('./db/db.json', JSON.stringify(notesData), 'utf8');
+        noteInput.push(req.body);
+        fs.writeFileSync('./db/db.json', JSON.stringify(noteInput), 'utf8');
         res.json(true);
     });
