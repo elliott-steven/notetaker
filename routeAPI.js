@@ -22,4 +22,9 @@ module.exports = function (app) {
         fs.writeFileSync('./db/db.json', JSON.stringify(noteInput), 'utf8');
         res.json(true);
     });
+    app.delete("/api/notes/:id", function (req, res) {
+        noteInput = deleteNote(req.id);
+        fs.writeFileSync('./db/db.json', JSON.stringify(noteInput), 'utf8');
+        res.json(noteInput);
+    });
 }

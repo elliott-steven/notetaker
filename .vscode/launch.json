@@ -9,7 +9,7 @@
             "port": 3006,
             "request": "attach",
             "type": "pwa-chrome",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}\public\\"
         },
         {
             "type": "pwa-node",
