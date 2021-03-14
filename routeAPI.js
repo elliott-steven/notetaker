@@ -22,3 +22,4 @@ module.exports = function (app) {
         fs.writeFileSync('./db/db.json', JSON.stringify(noteInput), 'utf8');
         res.json(true);
     });
+}
